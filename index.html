@@ -1,80 +1,101 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>Flores para ti 🌼</title>
+  <meta charset="UTF-8">
+  <title>Para ti 💛</title>
 
-<style>
-body{
-  margin:0;
-  background:black;
-  overflow:hidden;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  height:100vh;
-  flex-direction:column;
-  color:white;
-  font-family:sans-serif;
-}
+  <!-- FUENTE -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap" rel="stylesheet">
 
-/* FLORES SIMPLES PERO BONITAS */
-.flower{
-  font-size:60px;
-  animation: float 3s infinite ease-in-out;
-}
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
 
-.flower:nth-child(2){ animation-delay:0.5s; }
-.flower:nth-child(3){ animation-delay:1s; }
+    :root {
+      --dark-color: #000;
+    }
 
-@keyframes float{
-  0%{ transform:translateY(0);}
-  50%{ transform:translateY(-20px);}
-  100%{ transform:translateY(0);}
-}
+    body {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      min-height: 100vh;
+      background-color: var(--dark-color);
+      overflow: hidden;
+    }
 
-.message{
-  margin-top:20px;
-  font-size:18px;
-}
-</style>
+    .message {
+      background: #fce700;
+      bottom: 50px;
+      font-family: "Poppins", sans-serif;
+      font-size: 28px;
+      font-weight: 800;
+      padding: 15px;
+      position: absolute;
+      opacity: 0;
+      animation: fadeIn 2s forwards;
+      animation-delay: 3s;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* Fondo bonito simple */
+    .night {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at top, #001, #000);
+    }
+
+    /* FLORES SIMPLES (para que funcione rápido) */
+    .flower {
+      position: absolute;
+      bottom: 0;
+      width: 10px;
+      height: 100px;
+      background: green;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .flower::before {
+      content: "";
+      position: absolute;
+      top: -20px;
+      left: -15px;
+      width: 40px;
+      height: 40px;
+      background: yellow;
+      border-radius: 50%;
+    }
+
+  </style>
 </head>
 
 <body>
 
-<!-- 🌼 FLORES -->
-<div>
-  <div class="flower">🌼</div>
-  <div class="flower">🌼</div>
-  <div class="flower">🌼</div>
-</div>
+  <!-- MUSICA AUTOMATICA -->
+  <audio autoplay loop>
+    <source src="https://files.catbox.moe/8l7s5g.mp3" type="audio/mpeg">
+  </audio>
 
-<!-- 💬 MENSAJE -->
-<div class="message">
-Estas flores amarillas son para ti Dra foquita se que no es mucho pero algo es algo jdahkda 🦭
-</div>
+  <div class="night"></div>
 
-<!-- 🎵 AUDIO -->
-<audio id="music" loop>
-  <source src="Mac Miller - Planet God Damn (feat. Njomza).mp3" type="audio/mpeg">
-</audio>
+  <div class="flower"></div>
 
-<script>
-const audio = document.getElementById("music");
-
-document.addEventListener("click", () => {
-  audio.volume = 0;
-  audio.play();
-
-  let vol = 0;
-  const fade = setInterval(()=>{
-    if(vol < 1){
-      vol += 0.05;
-      audio.volume = vol;
-    } else clearInterval(fade);
-  },200);
-});
-</script>
+  <div class="message">
+    para ti Dra foquita 🦭<br>
+    se que no es mucho pero algo es algo 💛
+  </div>
 
 </body>
 </html>
