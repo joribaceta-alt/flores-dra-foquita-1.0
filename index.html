@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Flores para ti 🌼</title>
+
+<style>
+body{
+  margin:0;
+  background:#000;
+  overflow:hidden;
+  font-family:sans-serif;
+}
+
+.night{
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:radial-gradient(circle,#020111,#000);
+}
+
+/* MENSAJE */
+.message{
+  position:fixed;
+  bottom:30px;
+  width:100%;
+  text-align:center;
+  color:white;
+  font-size:20px;
+}
+
+/* 🌼 FLORES (ESTO ES LO QUE TE FALTABA) */
+.flowers{
+  position:absolute;
+  bottom:0;
+  width:100%;
+  display:flex;
+  justify-content:center;
+  gap:40px;
+}
+
+.flower{
+  position:relative;
+  width:80px;
+  height:200px;
+}
+
+.flower__leafs{
+  position:absolute;
+  top:0;
+  width:80px;
+  height:80px;
+}
+
+.flower__leaf{
+  position:absolute;
+  width:30px;
+  height:30px;
+  background:yellow;
+  border-radius:50%;
+  animation: bloom 2s infinite alternate;
+}
+
+.flower__leaf--1{ top:0; left:25px;}
+.flower__leaf--2{ top:25px; left:0;}
+.flower__leaf--3{ top:25px; right:0;}
+.flower__leaf--4{ bottom:0; left:25px;}
+
+.flower__white-circle{
+  position:absolute;
+  width:20px;
+  height:20px;
+  background:white;
+  border-radius:50%;
+  top:30px;
+  left:30px;
+}
+
+.flower__line{
+  position:absolute;
+  bottom:0;
+  left:38px;
+  width:4px;
+  height:120px;
+  background:green;
+}
+
+@keyframes bloom{
+  from{ transform:scale(0.8);}
+  to{ transform:scale(1.2);}
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🎵 AUDIO -->
+<audio id="music" loop>
+  <source src="Mac Miller - Planet God Damn (feat. Njomza).mp3" type="audio/mpeg">
+</audio>
+
+<div class="night"></div>
+
+<!-- 🌼 FLORES -->
+<div class="flowers">
+
+  <div class="flower">
+    <div class="flower__leafs">
+      <div class="flower__leaf flower__leaf--1"></div>
+      <div class="flower__leaf flower__leaf--2"></div>
+      <div class="flower__leaf flower__leaf--3"></div>
+      <div class="flower__leaf flower__leaf--4"></div>
+      <div class="flower__white-circle"></div>
+    </div>
+    <div class="flower__line"></div>
+  </div>
+
+  <div class="flower">
+    <div class="flower__leafs">
+      <div class="flower__leaf flower__leaf--1"></div>
+      <div class="flower__leaf flower__leaf--2"></div>
+      <div class="flower__leaf flower__leaf--3"></div>
+      <div class="flower__leaf flower__leaf--4"></div>
+      <div class="flower__white-circle"></div>
+    </div>
+    <div class="flower__line"></div>
+  </div>
+
+  <div class="flower">
+    <div class="flower__leafs">
+      <div class="flower__leaf flower__leaf--1"></div>
+      <div class="flower__leaf flower__leaf--2"></div>
+      <div class="flower__leaf flower__leaf--3"></div>
+      <div class="flower__leaf flower__leaf--4"></div>
+      <div class="flower__white-circle"></div>
+    </div>
+    <div class="flower__line"></div>
+  </div>
+
+</div>
+
+<!-- 💬 MENSAJE -->
+<div class="message">
+Estas flores amarillas son para ti Dra foquita se que no es mucho pero algo es algo jdahkda 🦭
+</div>
+
+<script>
+const audio = document.getElementById("music");
+
+function fadeInAudio(){
+  audio.volume = 0;
+  audio.play();
+
+  let vol = 0;
+  const fade = setInterval(() => {
+    if(vol < 1){
+      vol += 0.02;
+      audio.volume = vol;
+    } else {
+      clearInterval(fade);
+    }
+  }, 200);
+}
+
+document.addEventListener("click", fadeInAudio);
+</script>
+
+</body>
+</html>
