@@ -7,136 +7,46 @@
 <style>
 body{
   margin:0;
-  background:#000;
+  background:black;
   overflow:hidden;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  flex-direction:column;
+  color:white;
   font-family:sans-serif;
 }
 
-.night{
-  position:fixed;
-  width:100%;
-  height:100%;
-  background:radial-gradient(circle,#020111,#000);
-}
-
-/* MENSAJE */
-.message{
-  position:fixed;
-  bottom:30px;
-  width:100%;
-  text-align:center;
-  color:white;
-  font-size:20px;
-}
-
-/* 🌼 FLORES (ESTO ES LO QUE TE FALTABA) */
-.flowers{
-  position:absolute;
-  bottom:0;
-  width:100%;
-  display:flex;
-  justify-content:center;
-  gap:40px;
-}
-
+/* FLORES SIMPLES PERO BONITAS */
 .flower{
-  position:relative;
-  width:80px;
-  height:200px;
+  font-size:60px;
+  animation: float 3s infinite ease-in-out;
 }
 
-.flower__leafs{
-  position:absolute;
-  top:0;
-  width:80px;
-  height:80px;
+.flower:nth-child(2){ animation-delay:0.5s; }
+.flower:nth-child(3){ animation-delay:1s; }
+
+@keyframes float{
+  0%{ transform:translateY(0);}
+  50%{ transform:translateY(-20px);}
+  100%{ transform:translateY(0);}
 }
 
-.flower__leaf{
-  position:absolute;
-  width:30px;
-  height:30px;
-  background:yellow;
-  border-radius:50%;
-  animation: bloom 2s infinite alternate;
-}
-
-.flower__leaf--1{ top:0; left:25px;}
-.flower__leaf--2{ top:25px; left:0;}
-.flower__leaf--3{ top:25px; right:0;}
-.flower__leaf--4{ bottom:0; left:25px;}
-
-.flower__white-circle{
-  position:absolute;
-  width:20px;
-  height:20px;
-  background:white;
-  border-radius:50%;
-  top:30px;
-  left:30px;
-}
-
-.flower__line{
-  position:absolute;
-  bottom:0;
-  left:38px;
-  width:4px;
-  height:120px;
-  background:green;
-}
-
-@keyframes bloom{
-  from{ transform:scale(0.8);}
-  to{ transform:scale(1.2);}
+.message{
+  margin-top:20px;
+  font-size:18px;
 }
 </style>
 </head>
 
 <body>
 
-<!-- 🎵 AUDIO -->
-<audio id="music" loop>
-  <source src="Mac Miller - Planet God Damn (feat. Njomza).mp3" type="audio/mpeg">
-</audio>
-
-<div class="night"></div>
-
 <!-- 🌼 FLORES -->
-<div class="flowers">
-
-  <div class="flower">
-    <div class="flower__leafs">
-      <div class="flower__leaf flower__leaf--1"></div>
-      <div class="flower__leaf flower__leaf--2"></div>
-      <div class="flower__leaf flower__leaf--3"></div>
-      <div class="flower__leaf flower__leaf--4"></div>
-      <div class="flower__white-circle"></div>
-    </div>
-    <div class="flower__line"></div>
-  </div>
-
-  <div class="flower">
-    <div class="flower__leafs">
-      <div class="flower__leaf flower__leaf--1"></div>
-      <div class="flower__leaf flower__leaf--2"></div>
-      <div class="flower__leaf flower__leaf--3"></div>
-      <div class="flower__leaf flower__leaf--4"></div>
-      <div class="flower__white-circle"></div>
-    </div>
-    <div class="flower__line"></div>
-  </div>
-
-  <div class="flower">
-    <div class="flower__leafs">
-      <div class="flower__leaf flower__leaf--1"></div>
-      <div class="flower__leaf flower__leaf--2"></div>
-      <div class="flower__leaf flower__leaf--3"></div>
-      <div class="flower__leaf flower__leaf--4"></div>
-      <div class="flower__white-circle"></div>
-    </div>
-    <div class="flower__line"></div>
-  </div>
-
+<div>
+  <div class="flower">🌼</div>
+  <div class="flower">🌼</div>
+  <div class="flower">🌼</div>
 </div>
 
 <!-- 💬 MENSAJE -->
@@ -144,25 +54,26 @@ body{
 Estas flores amarillas son para ti Dra foquita se que no es mucho pero algo es algo jdahkda 🦭
 </div>
 
+<!-- 🎵 AUDIO -->
+<audio id="music" loop>
+  <source src="Mac Miller - Planet God Damn (feat. Njomza).mp3" type="audio/mpeg">
+</audio>
+
 <script>
 const audio = document.getElementById("music");
 
-function fadeInAudio(){
+document.addEventListener("click", () => {
   audio.volume = 0;
   audio.play();
 
   let vol = 0;
-  const fade = setInterval(() => {
+  const fade = setInterval(()=>{
     if(vol < 1){
-      vol += 0.02;
+      vol += 0.05;
       audio.volume = vol;
-    } else {
-      clearInterval(fade);
-    }
-  }, 200);
-}
-
-document.addEventListener("click", fadeInAudio);
+    } else clearInterval(fade);
+  },200);
+});
 </script>
 
 </body>
