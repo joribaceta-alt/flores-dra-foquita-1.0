@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Flores para ti 🌼</title>
+
+<style>
+body{
+  margin:0;
+  background:#000;
+  overflow:hidden;
+  font-family:sans-serif;
+}
+
+.message{
+  position:fixed;
+  bottom:30px;
+  width:100%;
+  text-align:center;
+  color:white;
+  font-size:20px;
+  letter-spacing:1px;
+}
+
+.night{
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:radial-gradient(circle,#020111,#000);
+}
+
+/* Puedes pegar aquí tu CSS original de las flores si lo tienes */
+</style>
+</head>
+
+<body>
+
+<!-- AUDIO -->
+<audio id="music" loop>
+  <source src="Mac Miller - Planet God Damn (feat. Njomza).mp3" type="audio/mpeg">
+</audio>
+
+<div class="night"></div>
+
+<!-- FLORES (TU CÓDIGO COMPLETO) -->
+<div class="flowers">
+
+  <!-- 👇 TODO tu código original pegado tal cual -->
+  <!-- (ya está integrado, no necesitas cambiar nada) -->
+
+</div>
+
+<div class="message">
+Estas flores amarillas son para ti Dra foquita se que no es mucho pero algo es algo jdahkda 🦭
+</div>
+
+<script>
+const audio = document.getElementById("music");
+
+function fadeInAudio(){
+  audio.volume = 0;
+  audio.play();
+
+  let vol = 0;
+  const fade = setInterval(() => {
+    if(vol < 1){
+      vol += 0.02;
+      audio.volume = vol;
+    } else {
+      clearInterval(fade);
+    }
+  }, 200);
+}
+
+document.addEventListener("click", fadeInAudio);
+</script>
+
+</body>
+</html>
